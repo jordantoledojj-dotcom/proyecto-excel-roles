@@ -21,10 +21,10 @@ Private Sub cmbRfc_Change()
         Set empl = Sheets("Empleados")
         Set valor = empl.Columns("A").Find(cmbRfc.value, LookIn:=xlValues, LookAt:=xlWhole)
         If Not valor Is Nothing Then
-            txtNombre.value = empl.Cells(valor.Row, 2).value & " " & _
-                      empl.Cells(valor.Row, 3).value & " " & _
-                      empl.Cells(valor.Row, 4).value
-            cmbSubadministracion.value = empl.Cells(valor.Row, 9).value
+            txtNombre.value = empl.Cells(valor.row, 2).value & " " & _
+                      empl.Cells(valor.row, 3).value & " " & _
+                      empl.Cells(valor.row, 4).value
+            cmbSubadministracion.value = empl.Cells(valor.row, 9).value
         End If
 End Sub
 Private Sub CommandButton1_Click()

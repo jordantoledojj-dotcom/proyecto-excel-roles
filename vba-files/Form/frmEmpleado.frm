@@ -86,7 +86,7 @@ Public Sub LlenarListaEmpleados(ByRef matrizDatosEmpleados As Variant)
     Me.lstEmpleados.Clear
     
     ' Si la colección está vacía, terminamos temprano
-    If IsEmpty(matrizDatosEmpleados) Then Exit Sub
+    If isEmpty(matrizDatosEmpleados) Then Exit Sub
     
     ' 2. Configurar las propiedades visuales del ListBox
     With Me.lstEmpleados
@@ -147,7 +147,7 @@ Private Sub cargarComboBoxDepartamento()
     Me.cmbDepartamento.Clear
     Dim listaNombresDeptos As Variant
     listaNombresDeptos = modEmpleadoController.cargarCatalogoDepartamentoXSubs(Me.cmbSubadministracion.value)
-    If IsEmpty(listaNombresDeptos) Then Exit Sub
+    If isEmpty(listaNombresDeptos) Then Exit Sub
     cmbDepartamento.List = listaNombresDeptos
 End Sub
 
@@ -155,7 +155,7 @@ Private Sub cargarComboBoxSubadministracion()
     Me.cmbSubadministracion.Clear
     Dim listaNombresSub As Variant
     listaNombresSub = modEmpleadoController.CargarCatalogoSubadministraciones
-    If IsEmpty(listaNombresSub) Then Exit Sub
+    If isEmpty(listaNombresSub) Then Exit Sub
     Me.cmbSubadministracion.List = listaNombresSub
 End Sub
 
@@ -163,7 +163,7 @@ Private Sub cargarComboBoxJefeDirecto()
     Me.cmbJefe_directo.Clear
     Dim matrizDatosJefes As Variant
     matrizDatosJefes = modEmpleadoController.ObtenerMatrizJefes
-    If IsEmpty(matrizDatosJefes) Then Exit Sub
+    If isEmpty(matrizDatosJefes) Then Exit Sub
     With Me.cmbJefe_directo
         .ColumnCount = 2
         .BoundColumn = 1

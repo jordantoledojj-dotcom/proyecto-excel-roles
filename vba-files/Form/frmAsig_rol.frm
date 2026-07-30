@@ -39,7 +39,7 @@ Private Sub CargarDatosRFC_corto()
     
     cmbRfc.Clear
     listaRFC = modAsignarRolController.obtenerListaRFC_corto
-    If IsEmpty(listaRFC) Then Exit Sub
+    If isEmpty(listaRFC) Then Exit Sub
     Me.cmbRfc.List = listaRFC
 End Sub
 

@@ -28,7 +28,7 @@ Public Function Insertar(ByRef empleado As clsEmpleado, ByRef ErrMensaje As Stri
     Set nuevaFila = ObtenertablaEmpleados().ListRows.Add
     
     ' 4. Mapeo del Objeto hacia las columnas de la Tabla (por el nombre de la cabecera)
-    Call MapearObjetoAFila(empleado, nuevaFila)
+    Call mapearObjetoAFila(empleado, nuevaFila)
     Call LimpiarCacheTablaEmpleados
     
     Insertar = True ' Operación exitosa
@@ -50,7 +50,7 @@ Public Function Actualizar(ByRef empleado As clsEmpleado, ByRef ErrMensaje As St
         Exit Function
     End If
     
-    Call MapearObjetoAFila(empleado, ObtenertablaEmpleados().ListRows(celdaRFC_corto.Row - ObtenertablaEmpleados().HeaderRowRange.Row)) 'nótese la resta
+    Call mapearObjetoAFila(empleado, ObtenertablaEmpleados().ListRows(celdaRFC_corto.row - ObtenertablaEmpleados().HeaderRowRange.row)) 'nótese la resta
     ' La resta dentro del argumento es para determinar en qué fila relativa de la tabla está.
     
     Call LimpiarCacheTablaEmpleados
@@ -83,7 +83,7 @@ Public Function ObtenerPorId(ByVal RFC_corto As String) As clsEmpleado
     ' Si se encuentra el RFC_corto en la tabla
     If Not celdaRFC_corto Is Nothing Then
         ' Determinamos en qué fila relativa de la tabla está
-        filaIndex = celdaRFC_corto.Row - ObtenertablaEmpleados().HeaderRowRange.Row
+        filaIndex = celdaRFC_corto.row - ObtenertablaEmpleados().HeaderRowRange.row
         
         ' Instanciamos el objeto y realizamos el mapeo inverso (De Tabla a Objeto)
         Set empleadoEncontrado = New clsEmpleado
@@ -169,7 +169,7 @@ Public Function obtenerEmpleadosPorBusqueda(ByVal strBuscar As String) As Collec
         
         Do
             ' Determinamos la fila relativa en la tabla
-            filaIndex = celdaEncontrada.Row - ObtenertablaEmpleados().HeaderRowRange.Row
+            filaIndex = celdaEncontrada.row - ObtenertablaEmpleados().HeaderRowRange.row
             
             ' Obtenemos el ID único (RFC Corto) de esa fila para validar duplicados
             Dim idCorto As String
@@ -225,7 +225,7 @@ Public Function Eliminar(ByVal RFC_corto As String, ByRef ErrMensaje As String) 
         Exit Function
     End If
     
-    filaIndex = celdaId.Row - tabla.HeaderRowRange.Row
+    filaIndex = celdaId.row - tabla.HeaderRowRange.row
     
     ' Eliminamos físicamente la fila del ListObject
     tabla.ListRows(filaIndex).Delete
@@ -281,7 +281,7 @@ End Function
 ' =================================================================
 ' MAPEO: De Objeto (Memoria) hacia Fila (Excel)
 ' =================================================================
-Private Sub MapearObjetoAFila(ByRef empleado As clsEmpleado, ByRef fila As ListRow)
+Private Sub mapearObjetoAFila(ByRef empleado As clsEmpleado, ByRef fila As ListRow)
     Dim tblEmplt As ListObject
     Set tblEmplt = ObtenertablaEmpleados() ' Usa la caché, costo de rendimiento = 0
     

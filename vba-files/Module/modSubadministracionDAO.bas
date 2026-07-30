@@ -53,7 +53,7 @@ End Function
 ' =================================================================
 ' MAPEO: De Objeto (Memoria) hacia Fila (Excel)
 ' =================================================================
-Private Sub MapearObjetoAFila(ByRef Subadministracion As clsSubadministracion, ByRef fila As ListRow)
+Private Sub mapearObjetoAFila(ByRef Subadministracion As clsSubadministracion, ByRef fila As ListRow)
     Dim tblSubs As ListObject
     Set tblSubs = ObtenerTablaSubs() ' Usa la caché, costo de rendimiento = 0
     
